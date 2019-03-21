@@ -1,0 +1,12 @@
+FROM golang:1.12.1-stretch
+
+ARG USERNAME
+ARG UID
+
+RUN useradd --create-home --uid $UID $USERNAME
+
+USER $UID:$UID
+
+WORKDIR /home/$USERNAME
+ENV GOPATH /home/$USERNAME/go
+ENV PATH $PATH:$GOPATH/bin

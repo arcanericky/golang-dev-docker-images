@@ -1,0 +1,18 @@
+FROM golang:1.12.1-alpine3.9
+
+ARG USERNAME
+ARG UID
+
+RUN adduser -D -u $UID $USERNAME
+
+RUN apk add --no-cache \
+  bash \
+  curl \
+  git \
+  make
+
+USER $UID:$UID
+
+WORKDIR /home/$USERNAME
+ENV GOPATH /home/$USERNAME/go
+ENV PATH $PATH:$GOPATH/bin
