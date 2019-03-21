@@ -1,5 +1,7 @@
 # Go Development Docker Images
 
+[![Build Status](https://travis-ci.com/arcanericky/golang-dev-docker-images.svg?branch=master)](https://travis-ci.com/arcanericky/golang-dev-docker-images)
+
 Scripts and Dockerfiles for creating Docker images for Go development
 
 ## Purpose

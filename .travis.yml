@@ -1,0 +1,8 @@
+language: go
+
+services:
+  - docker
+
+script:
+  - ./create-images.sh
+  
