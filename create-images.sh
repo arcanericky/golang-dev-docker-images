@@ -14,7 +14,12 @@ BUILDER () {
     ;;
   esac
 
-  TAG="golang:${NAME}"
+  VERSION=$(git tag --points-at HEAD | head -1)
+  if [ "$VERSION" = "" ]; then
+    VERSION="dev"
+  fi
+
+  TAG="golang-${NAME}:${VERSION}"
   FILE="Dockerfile-${NAME}"
 
   docker build \

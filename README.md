@@ -23,11 +23,11 @@ Run the image and map (or not) your [Go Workspace](https://golang.org/doc/code.h
 An example of starting an empty container:
 
 ```
-docker container run --name golang --hostname golang -it --rm golang:debian $USERNAME $(id -u)
+docker container run --name golang --hostname golang -it --rm golang-debian:latest $USERNAME $(id -u)
 ```
 
 An example of starting a container with your external home directory mounted.
 
 ```
-docker container run --name golang --hostname golang -it --rm -v $HOME:/home/$USERNAME golang:debian $USERNAME $(id -u)
+docker container run --name golang --hostname golang -it --rm -v $HOME:/home/$USERNAME golang-debian:latest $USERNAME $(id -u)
 ```
