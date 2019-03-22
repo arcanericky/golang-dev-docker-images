@@ -1,6 +1,8 @@
 # Go Development Docker Images
 
 [![Build Status](https://travis-ci.com/arcanericky/golang-dev-docker-images.svg?branch=master)](https://travis-ci.com/arcanericky/golang-dev-docker-images)
+![GitHub release](https://img.shields.io/github/release/arcanericky/golang-dev-docker-images.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Scripts and Dockerfiles to create Docker images for Go development
 
