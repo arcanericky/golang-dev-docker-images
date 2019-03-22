@@ -1,8 +1,20 @@
-language: go
+language: minimal
 
 services:
   - docker
 
 script:
   - ./create-images.sh alpine debian
-  
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+deploy:
+  provider: script
+  script: ./bin/deploy/docker-hub.sh
+  draft: true
+  on:
+    tags: true
+    #branch: master

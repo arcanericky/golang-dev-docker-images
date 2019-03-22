@@ -19,7 +19,7 @@ BUILDER () {
     VERSION="dev"
   fi
 
-  TAG="golang-${NAME}:${VERSION}"
+  TAG="golang-dev:${NAME}-${VERSION}"
   FILE="Dockerfile-${NAME}"
 
   docker build \
