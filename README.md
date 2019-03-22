@@ -10,12 +10,24 @@ Occasionally I have the pleasure of developing software using [Go](https://golan
 
 ## Building
 
-Run the `create-images.sh` script to generate Docker images for [Alpine](https://alpinelinux.org/) and [Debian](https://www.debian.org/). The script will automatically grab your user name and user ID then generate a corresponding user in the Docker image. This is useful to ensure files created in the container and mapped to the local filesystem contain your user ownership.
+Run the `create-images.sh` script to generate Docker images for [Alpine](https://alpinelinux.org/) and [Debian](https://www.debian.org/). This script requires at least one argument which is the base OS of the image. Currently this is limited to `alpine` and `debian`. Both images can be built using the single command:
+
+```
+./create-images.sh alpine debian
+```
 
 ## Using
 
-Run the image and map your [Go Workspace](https://golang.org/doc/code.html#Workspaces) to your liking. You may need to change your $GOPATH once inside the image or as part of launching the image. I'll usually map my home directory to the corresponding home directory in the container.
+Run the image and map (or not) your [Go Workspace](https://golang.org/doc/code.html#Workspaces) to your liking. You may need to change your $GOPATH once inside the container or as part of launching it. I'll usually map my home directory to the corresponding home directory in the container.
+
+An example of starting an empty container:
 
 ```
-docker container run --name golang --hostname golang -it --rm -v $HOME:/home/myusername golang:debian
+docker container run --name golang --hostname golang -it --rm golang:debian $USERNAME $(id -u)
+```
+
+An example of starting a container with your external home directory mounted.
+
+```
+docker container run --name golang --hostname golang -it --rm -v $HOME:/home/$USERNAME golang:debian $USERNAME $(id -u)
 ```
