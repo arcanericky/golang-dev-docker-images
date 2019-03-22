@@ -1,18 +1,15 @@
 FROM golang:1.12.1-alpine3.9
 
-ARG USERNAME
-ARG UID
-
-RUN adduser -D -u $UID $USERNAME
-
 RUN apk add --no-cache \
   bash \
   curl \
   git \
-  make
-
-USER $UID:$UID
+  make \
+  su-exec
 
 WORKDIR /home/$USERNAME
 ENV GOPATH /home/$USERNAME/go
 ENV PATH $PATH:$GOPATH/bin
+
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]

@@ -1,16 +1,29 @@
-#!/bin/sh
+#!/bin/bash
 
-USER=$(whoami)
-UID=$(id -u)
+BUILDER () {
+  case "$1" in
+  "alpine")
+    NAME="alpine"
+    ;;
+  "debian")
+    NAME="debian"
+    ;;
+  *)
+    echo "Unsupported build type: $1. Options are \"alpine\" and \"debian\""
+    return
+    ;;
+  esac
 
-docker build \
-  --build-arg USERNAME=$USER \
-  --build-arg UID=$UID \
-  --tag golang:alpine \
-  --file Dockerfile-alpine .
+  TAG="golang:${NAME}"
+  FILE="Dockerfile-${NAME}"
 
-docker build \
-  --build-arg USERNAME=$USER \
-  --build-arg UID=$UID \
-  --tag golang:debian \
-  --file Dockerfile-debian .
+  docker build \
+    --tag "$TAG" \
+    --file "$FILE" .
+}
+
+for IMAGE in "$@"
+do
+  echo "Building for $IMAGE"
+  BUILDER "$IMAGE"
+done
