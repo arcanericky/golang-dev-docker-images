@@ -8,7 +8,9 @@ Scripts and Dockerfiles to create Docker images for Go development
 
 ## Purpose
 
-Occasionally I have the pleasure of developing software using [Go](https://golang.org/). I usually do this with [Visual Studio Code](https://code.visualstudio.com/), Go, and other tools installed natively. I perform final builds using Go in a [Docker](https://www.docker.com/) container. These are the images I use.
+Occasionally I have the pleasure of developing software using [Go](https://golang.org/). I usually do this with [Visual Studio Code](https://code.visualstudio.com/), Go, and other tools installed natively. I perform final builds using Go in a [Docker](https://www.docker.com/) container. This is the code used to generate the images I use.
+
+If you're not interested in the source you can use the images by [**pulling them from Docker Hub**](https://hub.docker.com/r/arcanericky/golang-dev).
 
 ## Building
 
