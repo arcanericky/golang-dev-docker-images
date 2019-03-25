@@ -7,9 +7,5 @@ RUN apk add --no-cache \
   make \
   su-exec
 
-WORKDIR /home/$USERNAME
-ENV GOPATH /home/$USERNAME/go
-ENV PATH $PATH:$GOPATH/bin
-
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
