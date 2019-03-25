@@ -1,8 +1,4 @@
 FROM golang:1.12.1-stretch
 
-WORKDIR /home/$USERNAME
-ENV GOPATH /home/$USERNAME/go
-ENV PATH $PATH:$GOPATH/bin
-
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
