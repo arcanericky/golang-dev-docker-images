@@ -2,14 +2,11 @@
 
 BUILDER () {
   case "$1" in
-  "alpine")
-    NAME="alpine"
-    ;;
-  "debian")
-    NAME="debian"
+  "linux")
+    NAME="linux"
     ;;
   *)
-    echo "Unsupported build type: $1. Options are \"alpine\" and \"debian\""
+    echo "Unsupported build type: $1. Options are \"linux\""
     return
     ;;
   esac

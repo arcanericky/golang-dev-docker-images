@@ -4,7 +4,7 @@ services:
   - docker
 
 script:
-  - ./create-images.sh alpine debian
+  - ./create-images.sh linux
 
 after_script:
   - docker images

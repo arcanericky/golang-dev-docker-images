@@ -14,10 +14,10 @@ If you're not interested in the source you can use the images by [**pulling them
 
 ## Building
 
-Run the `create-images.sh` script to generate Docker images for [Alpine](https://alpinelinux.org/) and [Debian](https://www.debian.org/). This script requires at least one argument which is the base OS of the image. Currently this is limited to `alpine` and `debian`. Both images can be built using the single command:
+Run the `create-images.sh` script to generate Docker images for Linux only.. This script requires a single argument, only `linux` is supported.
 
 ```
-./create-images.sh alpine debian
+./create-images.sh linux
 ```
 
 ## Using
@@ -36,6 +36,13 @@ An example of starting a container with your external home directory mounted. Re
 
 ```
 docker container run --name golang --hostname golang -it --rm -v $HOME:/home/$USERNAME golang-dev:debian-latest $USERNAME $(id -u)
+```
+
+A quick test:
+
+```
+$ docker container run -it --rm golang-dev:linux-1.13.1-0 $USERNAME $(id -u) "go version"
+go version go1.13.1 linux/amd64
 ```
 
 A quick way to build a Go executable:
